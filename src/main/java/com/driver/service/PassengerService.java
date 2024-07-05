@@ -6,7 +6,7 @@ import com.driver.repository.PassengerRepository;
 import java.util.List;
 
 public class PassengerService {
-    private PassengerRepository passengerRepository = new PassengerRepository();
+    PassengerRepository passengerRepository = new PassengerRepository();
 
     public void addPassenger(Passenger passenger) {
         passengerRepository.addPassenger(passenger);

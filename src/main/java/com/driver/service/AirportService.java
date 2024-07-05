@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class AirportService {
 
-    private AirportRepository airportRepository = new AirportRepository();
+    AirportRepository airportRepository = new AirportRepository();
     public void addAirport(Airport airport) {
         airportRepository.addAirport(airport);
     }

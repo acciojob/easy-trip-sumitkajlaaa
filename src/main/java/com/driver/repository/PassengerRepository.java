@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class PassengerRepository {
 
-    private Map<Integer, Passenger> passengerMap = new HashMap<>();
-    private Map<Integer, List<Integer>> flightPassengersMap = new HashMap<>(); // Flight ID -> List of Passenger IDs
+    Map<Integer, Passenger> passengerMap = new HashMap<>();
+    Map<Integer, List<Integer>> flightPassengersMap = new HashMap<>(); // Flight ID -> List of Passenger IDs
 
     public void addPassenger(Passenger passenger) {
         passengerMap.put(passenger.getPassengerId(), passenger);

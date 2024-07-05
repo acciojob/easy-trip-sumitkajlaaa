@@ -8,9 +8,9 @@ import com.driver.repository.FlightRepository;
 import java.util.Date;
 
 public class FlightService {
-    private FlightRepository flightRepository = new FlightRepository();
+    FlightRepository flightRepository = new FlightRepository();
 
-    private PassengerService passengerService = new PassengerService();
+    PassengerService passengerService = new PassengerService();
 
     public void addFlight(Flight flight) {
         flightRepository.addFlight(flight);

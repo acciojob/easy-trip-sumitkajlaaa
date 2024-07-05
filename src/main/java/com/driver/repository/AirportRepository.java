@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AirportRepository {
-    private HashMap<String , Airport> airportMap = new HashMap<>();
+    HashMap<String , Airport> airportMap = new HashMap<>();
 
     public void addAirport(Airport airport) {
         airportMap.put(airport.getAirportName(), airport);

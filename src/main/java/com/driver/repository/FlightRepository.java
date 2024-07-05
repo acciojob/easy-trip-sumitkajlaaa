@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class FlightRepository {
 
-    private Map<Integer, Flight> flightMap = new HashMap<>();
+    Map<Integer, Flight> flightMap = new HashMap<>();
 
     public void addFlight(Flight flight) {
         flightMap.put(flight.getFlightId(), flight);
