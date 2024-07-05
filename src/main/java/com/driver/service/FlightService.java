@@ -1,16 +1,21 @@
 package com.driver.service;
 
+import com.driver.model.Airport;
 import com.driver.model.City;
 import com.driver.model.Flight;
 import com.driver.repository.AirportRepository;
 import com.driver.repository.FlightRepository;
+import com.driver.repository.PassengerRepository;
 
 import java.util.Date;
+import java.util.Map;
 
 public class FlightService {
     FlightRepository flightRepository = new FlightRepository();
 
     PassengerService passengerService = new PassengerService();
+    AirportRepository airportRepository = new AirportRepository();
+    PassengerRepository passengerRepository = new PassengerRepository();
 
     public void addFlight(Flight flight) {
         flightRepository.addFlight(flight);
@@ -32,18 +37,20 @@ public class FlightService {
     }
 
 
-    public int getNumberOfPeopleOn(Date date, String airportName, AirportService airportService, PassengerService passengerService) {
+    public int getNumberOfPeopleOn(Date date, String airportName) {
         int count = 0;
-        for (Flight flight : flightRepository.getAllFlights().values()) {
-            if (flight.getFlightDate().equals(date)) {
-                String fromAirport = airportService.getAirportNameByCity(flight.getFromCity());
-                String toAirport = airportService.getAirportNameByCity(flight.getToCity());
-
-                if (fromAirport.equals(airportName) || toAirport.equals(airportName)) {
-                    count += passengerService.getPassengerCountByFlightId(flight.getFlightId());
-                }
+        Map<Integer , Flight> flightMap = flightRepository.getAllFlightsByDate(date);
+        Airport airport = airportRepository.getAirport(airportName);
+        if(flightMap == null || airport == null){
+            return 0;
+        }
+        for(Integer key: flightMap.keySet()){
+            Flight flight = flightMap.get(key);
+            if(flight.getToCity() == airport.getCity() || flight.getFromCity() == airport.getCity()){
+                count += passengerRepository.getPassengerCountByFlightId(flight.getFlightId());
             }
         }
+
         return count;
     }
 
