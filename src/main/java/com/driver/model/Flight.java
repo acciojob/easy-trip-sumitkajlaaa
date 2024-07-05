@@ -17,7 +17,12 @@ public class Flight {
     private double duration;
 
     public Flight() {
-
+        this.flightId = 0;
+        this.fromCity =null;
+        this.toCity = null;
+        this.maxCapacity = 0;
+        this.flightDate = null;
+        this.duration = 0.0;
     }
 
     public Flight(int flightId, City fromCity, City toCity, int maxCapacity, Date flightDate, double duration) {

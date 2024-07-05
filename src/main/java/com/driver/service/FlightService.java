@@ -61,7 +61,7 @@ public class FlightService {
 
     public boolean bookATicket(int flightId, int passengerId) {
         Flight flight = flightRepository.getFlightById(flightId);
-        if (flight == null || flight.getMaxCapacity() <= passengerService.getPassengerCountByFlightId(flightId) || passengerService.hasPassengerBookedFlight(passengerId, flightId)) {
+        if (flight == null || flight.getMaxCapacity() <= passengerRepository.getPassengerCountByFlightId(flightId) || passengerRepository.hasPassengerBookedFlight(passengerId, flightId)) {
             return false;
         }
         passengerService.addPassengerToFlight(flightId, passengerId);
