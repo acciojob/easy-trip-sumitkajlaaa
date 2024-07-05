@@ -59,7 +59,7 @@ public class FlightService {
         return 3000 + passengerCount * 50;
     }
 
-    public boolean bookATicket(int flightId, int passengerId, PassengerService passengerService) {
+    public boolean bookATicket(int flightId, int passengerId) {
         Flight flight = flightRepository.getFlightById(flightId);
         if (flight == null || flight.getMaxCapacity() <= passengerService.getPassengerCountByFlightId(flightId) || passengerService.hasPassengerBookedFlight(passengerId, flightId)) {
             return false;
@@ -68,7 +68,7 @@ public class FlightService {
         return true;
     }
 
-    public boolean cancelATicket(int flightId, int passengerId, PassengerService passengerService) {
+    public boolean cancelATicket(int flightId, int passengerId) {
         if (!passengerService.hasPassengerBookedFlight(passengerId, flightId)) {
             return false;
         }
